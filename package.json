@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tsc -b && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +12,19 @@
   "type": "commonjs",
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@prisma/client": "^5.22.0",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.0.3",
     "i": "^0.3.7",
     "npm": "^11.7.0",
