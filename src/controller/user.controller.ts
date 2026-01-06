@@ -71,9 +71,10 @@ export const login =async (req:Request, res:Response):Promise<void>=>{
         })
         if (!existingUser) {
             res.status(401).send({ message: "Invalid credentials" });
-            return;
+            
+            return; // Add return here to stop further execution
         }
-        const isPasswordMatch =  await bcrypt.compare(login.data?.password,existingUser.password)
+        const isPasswordMatch =  await bcrypt.compare(login.data.password, existingUser.password)
         if(!isPasswordMatch){
             res.status(401).send({message:"Invalid credentials"});
             return;
@@ -92,8 +93,8 @@ export const login =async (req:Request, res:Response):Promise<void>=>{
         }).send({
             message:"User logged in successfully", user:existingUser, token:token
         })
-    } catch (error) {
-        res.status(401).send({message:"Invalid credentials"});
+    } catch (error:Error | any) {
+        res.status(401).send({message:"internal server error",error:error.message});
     }
 }
 
